@@ -1,0 +1,421 @@
+/* Seu CSS existente para body */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* --- ESTILOS PARA OS CONTAINERS DE CONTEÚDO (Quiz, Mensagens) --- */
+#conteudo-inicial,
+#container-quiz,
+#confirmacao-identidade {
+    /* display é controlado por JS ou pela regra específica abaixo para #conteudo-inicial */
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box; /* Garante que padding não aumente a largura total */
+    /* margin-left: auto; e margin-right: auto; são desnecessários se o body já é display:flex e align-items:center */
+}
+
+/* --- ESTADOS INICIAIS DOS CONTAINERS PRINCIPAIS --- */
+#conteudo-inicial {
+    display: block; /* Conteúdo inicial é visível por padrão */
+    /* Herda padding, width, max-width da regra acima */
+}
+
+#container-quiz,
+#confirmacao-identidade {
+    display: none; /* Começam ocultos; serão mostrados via JavaScript */
+    /* Herdam padding, width, max-width da regra acima */
+}
+
+/* --- ESTILOS DO .embrulho-presente (PARA TELA CHEIA) --- */
+.embrulho-presente {
+    display: none; /* Começa oculto; JS mudará para 'flex' */
+    position: fixed; /* Para ocupar a tela inteira, independente do scroll */
+    top: 0;
+    left: 0;
+    width: 100%;   /* Ocupa 100% da largura da viewport */
+    height: 100%;  /* Ocupa 100% da altura da viewport */
+    align-items: center;
+    justify-content: center;
+    z-index: 10;   /* Para ficar acima de outros conteúdos quando visível */
+    padding: 0;    /* Geralmente sem padding para um container de tela cheia */
+    /* max-width: none; ou max-width: 100%; para garantir que não seja limitado */
+}
+
+
+/* --- ESTILOS PARA #conteudo-inicial (filhos) --- */
+#titulo-quiz {
+    color: #ffd700;
+    font-size: 2em;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+#subtitulo-quiz {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+#btn-inicio {
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+#btn-inicio:hover {
+    background-color: #ffec80;
+    transform: translateY(-2px);
+}
+
+/* --- ESTILOS PARA #container-quiz (filhos) --- */
+#pergunta {
+    font-size: 1.3em;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    min-height: 50px;
+    line-height: 1.4;
+}
+
+#container-opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-opcao {
+    background-color: #b8860b;
+    color: white;
+    border: 1px solid #ffd700;
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+}
+
+.btn-opcao:hover:not(:disabled) {
+    background-color: #ffd700;
+    color: #333;
+    border-color: #fff8dc;
+}
+
+.btn-opcao:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-opcao.correta {
+    background-color: #28a745 !important;
+    color: white !important;
+    border-color: #28a745 !important;
+}
+
+.btn-opcao.incorreta {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border-color: #dc3545 !important;
+}
+
+#feedback {
+    font-size: 1.1em;
+    margin-top: 25px;
+    min-height: 30px;
+    font-weight: bold;
+}
+
+/* --- ESTILOS PARA #confirmacao-identidade (filhos) --- */
+#confirmacao-identidade h2 {
+    color: #ffd700;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+#confirmacao-identidade p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+
+/* --- ESTILOS DAS FITAS E LAÇO DENTRO DE .embrulho-presente --- */
+/* (Seus estilos para .fita-esquerda, .fita-direita, .laco, .fita-central, #emoji, .laco::before, .laco::after continuam aqui) */
+/* Certifique-se que eles estão corretos, como na nossa discussão anterior */
+
+.fita-esquerda,
+.fita-direita {
+    height: 40px;
+    flex-grow: 1;
+    background: linear-gradient(
+        90deg,
+        #b8860b,
+        #ffd700,
+        #fff8dc,
+        #ffd700,
+        #b8860b
+    );
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+.fita-esquerda { transform-origin: right; }
+.fita-direita { transform-origin: left; }
+
+
+.laco {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ffd700, #fff8dc, #daa520);
+    border-radius: 50%;
+    position: relative; /* Necessário para ::before, ::after e #emoji */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    cursor: default;
+    z-index: 12;
+    flex-shrink: 0;
+}
+
+.fita-central {
+    width: 55px;
+    height: 100vh; /* Ou 100% se .embrulho-presente já tem altura definida */
+    background: linear-gradient(
+        0deg, /* Vertical */
+        #b8860b,
+        #ffd700,
+        #fff8dc,
+        #ffd700,
+        #b8860b
+    );
+    position: absolute; /* Centralizado dentro do .embrulho-presente */
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    z-index: 11; /* Abaixo do laço, acima das fitas horizontais */
+    transform-origin: center; /* Ou top/bottom para animação vertical */
+}
+
+#emoji {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 42px;
+    /* position: absolute; top:0; left:0; Se necessário para ajuste fino */
+}
+
+.laco::before,
+.laco::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: inherit; /* Herda o gradiente do .laco */
+    border-radius: 50%;
+    top: 10px; 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    z-index: -1;
+}
+
+.laco::before {
+    left: -30px; 
+    transform: translateY(calc(50% - 10px)) rotate(-45deg); 
+}
+
+.laco::after {
+    right: -30px; 
+    transform: translateY(calc(50% - 10px)) rotate(45deg);
+}
+
+
+/* --- ANIMAÇÕES --- */
+/* (Suas animações @keyframes scaleOutX, scaleOutY, pulseLaco aqui) */
+/* E as classes .animar-recolher e .interacao-pulso */
+
+@keyframes scaleOutX {
+    0% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0); opacity: 0; }
+}
+
+@keyframes scaleOutY {
+    0% { transform: scaleY(1); opacity: 1 ;}
+    100% { transform: scaleY(0); opacity: 0; }
+}
+
+.fita-esquerda.animar-recolher,  /* Já tem transform-origin definido acima */
+.fita-direita.animar-recolher { /* Já tem transform-origin definido acima */
+    animation: scaleOutX 0.8s ease forwards;
+}
+
+.fita-central.animar-recolher {
+    /* Defina o transform-origin de acordo com a direção desejada da animação */
+    /* Ex: transform-origin: top; se for scaleOutY e quiser que encolha para cima */
+    animation: scaleOutY 0.8s ease forwards; /* ou scaleOutX se preferir */
+}
+
+@keyframes pulseLaco {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+.laco.interacao-pulso {
+    cursor: pointer;
+    animation: pulseLaco 1.5s infinite ease-in-out;
+}
+
+/* ... (todo o seu CSS existente acima desta linha) ... */
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+
+@media (max-width: 600px) { /* Ajustes para telas menores (celulares) */
+
+    /* Ajustes gerais para os containers de conteúdo */
+    #conteudo-inicial,
+    #container-quiz,
+    #confirmacao-identidade {
+        width: 95%; /* Ocupa um pouco mais da largura da tela */
+        padding: 15px; /* Reduz o padding interno */
+        /* max-width permanece 600px, mas não será atingido aqui */
+    }
+
+    /* Fontes */
+    #titulo-quiz {
+        font-size: 1.7em; /* Reduz o tamanho do título principal */
+        margin-bottom: 10px;
+    }
+
+    #subtitulo-quiz {
+        font-size: 1em; /* Reduz o subtítulo */
+        margin-bottom: 25px;
+    }
+
+    #btn-inicio {
+        font-size: 1.1em; /* Botão de início um pouco menor */
+        padding: 10px 25px;
+    }
+
+    #pergunta {
+        font-size: 1.15em; /* Tamanho da pergunta */
+        margin-bottom: 20px;
+        min-height: 40px; /* Ajusta min-height */
+    }
+
+    .btn-opcao {
+        font-size: 0.95em; /* Botões de opção */
+        padding: 10px;
+    }
+
+    #feedback {
+        font-size: 1em; /* Mensagem de feedback */
+        margin-top: 20px;
+        min-height: 25px;
+    }
+
+    #confirmacao-identidade h2 {
+        font-size: 1.6em; /* Título da confirmação */
+    }
+
+    #confirmacao-identidade p {
+        font-size: 1em; /* Texto da confirmação */
+    }
+
+    /* Ajustes nos elementos do "Presente" para telas menores */
+    .fita-esquerda,
+    .fita-direita {
+        height: 30px; /* Fitas horizontais mais finas */
+    }
+
+    .fita-central {
+        width: 40px; /* Fita vertical mais fina */
+    }
+
+    .laco {
+        width: 65px;   /* Laço menor */
+        height: 65px;
+    }
+
+    .laco:hover {
+        cursor: pointer;
+    }
+
+    #emoji {
+        font-size: 32px; /* Emoji menor, proporcional ao laço */
+        line-height: 65px; /* Para centralizar no novo tamanho do laço */
+    }
+
+    }
+
+    .laco::before,
+    .laco::after {
+        width: 50px;  /* "Voltas" do laço menores */
+        height: 50px;
+        top: 7.5px; /* (65 - 50) / 2 = 7.5px para centralizar as voltas no corpo do laço */
+    }
+
+    .laco::before {
+        left: -25px; /* Metade da nova largura da volta (50px / 2) */
+        /* Ajuste fino da transformação se necessário para o novo tamanho */
+        transform: translateY(calc(50% - 7.5px)) rotate(-40deg); /* Pequeno ajuste no ângulo se parecer melhor */
+    }
+
+    .laco::after {
+        right: -25px;
+        /* Ajuste fino da transformação se necessário para o novo tamanho */
+        transform: translateY(calc(50% - 7.5px)) rotate(40deg);
+    }
+
+
+/* Opcional: Breakpoint para telas ainda menores, se necessário */
+@media (max-width: 400px) {
+    #titulo-quiz {
+        font-size: 1.5em;
+    }
+    #subtitulo-quiz {
+        font-size: 0.9em;
+    }
+    #btn-inicio {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    #pergunta {
+        font-size: 1.05em;
+    }
+    .btn-opcao {
+        font-size: 0.9em;
+    }
+    #confirmacao-identidade h2 {
+        font-size: 1.4em;
+    }
+
+    /* Ajustes ainda menores para o laço se parecer muito grande */
+    .laco {
+        width: 55px;
+        height: 55px;
+    }
+    #emoji {
+        font-size: 26px;
+        line-height: 55px;
+    }
+    .laco::before, .laco::after {
+        width: 40px; height: 40px; top: 7.5px; /* (55-40)/2 */
+    }
+    .laco::before { left: -20px; transform: translateY(calc(50% - 7.5px)) rotate(-40deg); }
+    .laco::after { right: -20px; transform: translateY(calc(50% - 7.5px)) rotate(40deg); }
+}

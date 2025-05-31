@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/login.css">
+    <title>Confirme sua identidade</title>
+</head>
+
+<body>
+    <div id="conteudo-inicial">
+        <h1 id="titulo-quiz">⚠ Este é um presente exclusivo! ⚠</h1>
+        <h2 id="subtitulo-quiz">Para poder ter acesso, responda essas 47 perguntas para você provar que você é você mesma.</h2>
+        <button type="button" id="btn-inicio">Iniciar</button>
+    </div>
+
+    <div id="container-quiz" style="display: none;">
+        <p id="pergunta"></p>
+        <div id="container-opcoes"></div>
+        <p id="feedback"></p>
+    </div>
+
+    <div id="confirmacao-identidade" style="display: none;">
+        <h2>Não, não eram 47 perguntas de verdade. Era só para testar sua curiosidade... 😏</h2>
+        <p>Feliz aniversário, meu amor! ❤️</p> <p>Pode abrir o seu presente clicando no laço na próxima tela!</p>
+    </div>
+
+    <div class="embrulho-presente" style="display: none;">
+        <div class="fita-esquerda"></div>
+        <div class="laco" id="laco">
+            <span id="emoji">🌹</span>
+        </div>
+        <div class="fita-direita"></div>
+        <div class="fita-central" id="fita-central"></div>
+    </div>
+    <script src="login.js"></script>
+</body>
+
+</html>
