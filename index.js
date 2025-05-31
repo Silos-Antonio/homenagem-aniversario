@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA DE ABERTURA DO PRESENTE ---
     function openPresent() {
         laco.removeEventListener('click', openPresent);
-        laco.classList.remove('interacao-pulso ');
+        laco.classList.remove('interacao-pulso');
 
         laco.style.transform = 'translateY(-60px) scale(0.7)';
         laco.style.opacity = '0';
