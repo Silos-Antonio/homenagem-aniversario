@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
             answer: "Todas as opções anteriores"
         },
         {
-            question: "Qual a sua comida favorita? Essa vai ser difícil, mesmo se for você mesma. 😂",
+            question: "Qual a sua comida favorita? Essa vai ser difícil. 😂",
             options: ["Pizza", "Lasanha", "Um BKzinho", "Todas são maravilhosas!"],
-            answer: "Todas são maravilhosas!"
+            answer: "Lasanha"
         },
         {
             question: "Qual foi nosso primeiro apelido carinhoso? 🤗",
