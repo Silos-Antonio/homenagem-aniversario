@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Redireciona após a animação e início da música
         setTimeout(() => {
             // MUITO IMPORTANTE: Verifique se "index.html" é o nome correto da sua página de homenagem.
-            window.location.href = "index.html"; 
+            window.location.href = "homenagem.html"; 
         }, 1200); // Tempo para animações e início da música
     } // <<<< FIM CORRETO DA FUNÇÃO openPresent
 
