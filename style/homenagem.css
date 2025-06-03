@@ -65,8 +65,8 @@ p, #lista li {
 
 /* Carrossel - largura maior que antes, porém cabendo no celular */
 #carrossel-container {
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 500px;
   height: 600px; /* altura fixa */
   overflow: hidden;
   margin: 30px auto;
@@ -118,11 +118,11 @@ footer {
 /* Ajustes adicionais para telas maiores (> 768px) */
 @media (min-width: 768px) {
   #carrossel-container {
-    max-width: 90%;
-    height: 60vh;
+    max-width: 100%;
+    height: 600px;
   }
   .foto {
-    height: 60vh;
+    height: 600px;
   }
   h1 {
     font-size: 4rem;
@@ -151,9 +151,9 @@ footer {
   }
   #carrossel-container {
     max-width: 600px;
-    height: 60vh;
+    height: 600px;
   }
   .foto {
-    height: 60vh;
+    height: 600px;
   }
 }
